@@ -1,0 +1,37 @@
+.book{
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.even{
+    background-color: rgba(0,0,0,0.6);
+}
+.book-head{
+    color: #fff;
+    margin-top: 25px;
+}
+.Price{
+
+    text-align: center;
+}
+.Price span{
+    color: yellow;
+    background-color:#343a40!important;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius:25px;
+}
+.price span{
+    color: yellow;
+    background-color:#343a40!important;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius:25px;
+}
+
+p {
+    color: #fff;
+}
+.desc{
+    text-align: justify;
+}

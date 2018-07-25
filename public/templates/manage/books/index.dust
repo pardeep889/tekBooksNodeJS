@@ -1,0 +1,35 @@
+{>"layouts/manage" /}
+{<body}
+
+        <div class="container book">
+                <h2>All Books</h2>
+                    <div><a href="/manage/books/add" class="btn btn-success">Add New Book</a></div>
+                    <br>
+                <table class="table table-dark table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Book Name</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {#books}
+                          <tr>
+                            <td>{id}</td>
+                            <td>{title}</td>
+                            <td>{category}</td>
+                            <td>
+                                 <a href="/manage/books/edit/{_id}" class="btn btn-success btn-sm" > Edit</a> &nbsp;
+                                 <a href="#" class="btn btn-danger btn-sm remove-book" > Delete</a>
+                            </td>
+                          </tr>
+                        {/books}
+                        </tbody>
+                      </table>
+        </div>
+
+
+
+{/body}

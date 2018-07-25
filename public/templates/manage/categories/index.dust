@@ -1,0 +1,33 @@
+{>"layouts/manage" /}
+{<body}
+        <div class="container book">
+
+
+                <h2>All Categories</h2>
+                <div><a href="/manage/category/add" class="btn btn-success">Add New Category</a></div>
+                <br>
+                <table class="table table-dark table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Category Name</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {#categories}
+                            <tr>
+                                <td>{id}</td>
+                                <td>{name}</td>
+                                <td>
+                                    <a href="/manage/categories/edit/{_id}" class="btn btn-success btn-sm" > Edit</a> &nbsp;
+                                    <a href="#" class="btn btn-danger btn-sm remove-category" > Delete</a>
+                                </td>
+                            </tr>
+                        {/categories}
+                        </tbody>
+                      </table>
+        </div>
+
+
+{/body}

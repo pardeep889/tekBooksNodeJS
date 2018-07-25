@@ -1,0 +1,33 @@
+{>"layouts/master" /}
+{<body}
+<!-- {book} -->
+    <div class="container-fluid even book">
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                    <img src="/img/{book.cover}" class="img img-responsive" width="100%" alt="">
+            </div>
+            <div class="col-sm-8">
+                    <h2>{book.title}</h2>
+                    <ul class="bookinfo">
+                        <li> Category: {book.category}</li>
+                        <li> Auther: {book.author}</li>
+                        <li>Publisher: {book.publisher}</li>
+                    </ul>
+                    <br>
+                    <div class="price"> <span> ${book.price} </span></div>
+                    <br>
+                    <h2>Description: </h2>
+                    <div class="desc">
+                            {book.description}
+                    </div>
+                    <div>
+                            <a href="#" class="btn btn-success btn-sm">Add to Cart</a> &nbsp;
+                            <a href="/" class="btn btn-danger btn-sm">Go Back</a>
+                    </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+{/body}

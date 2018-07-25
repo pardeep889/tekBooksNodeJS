@@ -1,0 +1,28 @@
+{>"layouts/master" /}
+
+{<body}
+
+<div class="container-fluid even book">
+    <div class="container">
+         <div class="row">
+{#books}
+            <div class="col-sm-3">
+                <div class="book-pic">
+                        <img src="/img/{cover}" class="img img-responsive" width="100%" alt="">
+                </div>
+
+            <h4 class="book-head">{title}</h4>
+            <p>
+               {truncText}...
+            </p>
+            <div class="Price"> <span> ${price} </span></div> <br>
+            <div class="text-center">
+                    <a href="/books/details/{_id}" class="btn btn-info btn-sm">Book Details</a>
+            </div>
+
+            </div>
+{/books}
+    </div>
+</div>
+</div>
+{/body}
