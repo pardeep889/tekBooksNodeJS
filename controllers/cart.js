@@ -15,6 +15,8 @@ module.exports = function (router) {
             displayCart.items.push(cart[item]);
             total += (cart[item].qty * cart[item].price);
         }
+
+
         displayCart.total = total;
         // cart = displayCart;
         // console.log(cart);
@@ -43,7 +45,8 @@ module.exports = function (router) {
             res.redirect('/cart');
         });
     });
-    router.get('/cart/remove', function (req,res) {
-        console.log(req.sessionID);
-     });
+    router.get('/remove', function(req,res){
+        req.session.cart = null;
+        res.redirect('/cart');
+    });
 };

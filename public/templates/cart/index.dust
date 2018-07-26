@@ -1,7 +1,6 @@
 {>"layouts/master" /}
 {<body}
- <div class="row book ">
-    <div class="container even book">
+    <div class="container  book">
         <div class="row">
         <div class="col-sm-10">
                 <h2>Your Cart</h2>
@@ -44,9 +43,8 @@
                    </div>
             </div>
     {:else}
-    <p>There is no Items in your cart</p>
+    <p class="text-danger">There is no Items in your cart</p>
     {/cart.items}
     </div>
  </div>
-
 {/body}
