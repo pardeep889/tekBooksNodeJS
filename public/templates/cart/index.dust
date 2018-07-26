@@ -1,24 +1,34 @@
 {>"layouts/master" /}
 {<body}
- <div class="row">
-    <div class="container">
-        <h2>Your Cart</h2>
-        {?cart.items}
-            <table>
+ <div class="row book ">
+    <div class="container even book">
+        <div class="row">
+        <div class="col-sm-10">
+                <h2>Your Cart</h2>
+        </div>
+    {?cart.items}
+            <div class="col-sm-2">
+                    <a href="/cart/remove" class="btn btn-danger">Empty Cart</a>
+            </div>
+
+        </div>
+            <table class="table table-dark table-hover">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Item</th>
                         <th>Quantity</th>
-                        <th>Total</th>
+                        <th>Price</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {#cart.items}
                         <tr>
-                            <td><a href="books/details/{._id}">{title}</a></td>
-                            <td>{.qty}</td>
-                            <td> ${@math key="{.price}" method="multiply" operand ="{.qty}"}</td>
+                            <td>{item}</td>
+                            <td><a href="books/details/{item}">{title}</a></td>
+                            <td>{qty}</td>
+                            <td>{price} X {qty} </td>
                             <td><a href="#" class="btn btn-danger">Remove</a></td>
                         </tr>
                     {/cart.items}
@@ -26,16 +36,16 @@
             </table>
             <div class="row">
                     <div class="col-sm-6">
-                       <h4> Total <strong>${cart.total}</strong></h4>
+                       <h4> Total <strong> <span class="text-success">  ${cart.total}     </span></strong></h4>
                     </div>
 
                     <div class="col-sm-6">
 
                    </div>
             </div>
-            {:else}
-                <p>There is no Items in your cart</p>
-        {/cart.items}
+    {:else}
+    <p>There is no Items in your cart</p>
+    {/cart.items}
     </div>
  </div>
 
