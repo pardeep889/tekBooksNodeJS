@@ -1,14 +1,14 @@
 {
 
-    
+
     "express": {
         "view cache": false,
         "view engine": "js",
         "views": "path:./.build/templates"
     },
-    
 
-    
+
+
     "view engines": {
         "js": {
             "module": "engine-munger",
@@ -26,21 +26,50 @@
             }
         }
     },
-    
 
-    
+
+
     "i18n": {
         "contentPath": "path:./locales",
         "fallback": "en-US"
     },
-    
+
 
     "specialization": {
     },
 
     "middleware": {
 
-        
+        "appsec": {
+            "priority": 110,
+            "module": {
+                "name": "lusca",
+                "arguments": [
+                    {
+                        "csrf": false,
+                        "xframe": "SAMEORIGIN",
+                        "p3p": false,
+                        "csp": false
+                    }
+                ]
+            }
+        },
+
+        "appsecprotect": {
+            "route": "/books",
+            "enabled": true,
+            "priority": 111,
+            "module": {
+                "name": "lusca",
+                "arguments": [
+                    {
+                        "csrf": true
+                    }
+                ]
+            }
+        },
+
+
         "expressView": {
             "priority": 100,
             "enabled": true,
@@ -48,7 +77,7 @@
                 "name": "engine-munger/lib/expressView"
             }
         },
-        
+
 
         "static": {
             "module": {

@@ -2,7 +2,6 @@
 
 var Book = require('../models/bookModel');
 var Category = require('../models/categoryModel');
-var flash = require('connect-flash');
 module.exports = function (router) {
     router.get('/books', function (req, res) {
         Book.find({}, function(err,books){
@@ -126,6 +125,66 @@ module.exports = function (router) {
             req.flash('success', 'Book is Updated');
             res.location('/manage/books');
             res.redirect('/manage/books');
+        });
+    });
+    router.delete('/books/delete/:id', function(req,res){
+        Book.remove({_id: req.params.id}, function(err){
+            if(err) throw err;
+            req.flash('success', 'Book is Deleted');
+            res.location('/');
+            res.redirect('/');
+        });
+    });
+    router.get('/category/add/', function(req,res){
+        res.render('manage/categories/add');
+    });
+
+    router.post('/categories', function(req,res){
+        var name = req.body.name && req.body.name.trim();
+
+        if(name == ''){
+            req.flash('error', 'please fill out the the name');
+            res.location('/manage/categories/add');
+            res.redirect('/manage/categories/add');
+        }
+        var newCategory = new Category({
+            name: name
+        });
+
+        newCategory.save(function(err){
+            if(err) throw err;
+            req.flash('Success', 'Category Added Successfully');
+            res.location('/manage/categories');
+            res.redirect('/manage/categories');
+        });
+    });
+
+    router.get('/categories/edit/:id', function(req,res){
+        Category.findOne({_id: req.params.id}, function(err,category){
+            if(err) throw err;
+            var model = {
+                category: category
+            };
+            res.render('manage/categories/edit', model);
+        });
+    });
+
+    router.post('/categories/edit/:id', function(req,res){
+        var name = req.body.name && req.body.name.trim();
+        Category.update({_id: req.params.id} ,{ name: name }, function(err){
+            if(err) throw err;
+            req.flash('Success', 'Category Updated');
+            res.location('/manage/categories');
+            res.redirect('/manage/categories');
+        });
+    });
+
+    router.delete('/categories/delete/:id', function(req,res){
+        Category.remove({_id: req.params.id}, function(err){
+            if(err) throw err;
+            req.flash('success', 'Category is Deleted');
+            res.location('/');
+            res.redirect('/');
         });
     });
 };
